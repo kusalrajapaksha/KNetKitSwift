@@ -22,7 +22,7 @@ Add MyNetworkPackage to your project via Swift Package Manager.
 
 ```
 dependencies: [
-    .package(url: "https://github.com/kusalrajapaksha/KNetKitSwift.git", from: "1.0.0")
+    .package(url: ["https://github.com/kusalrajapaksha/KNetKitSwift.git", from: "1.0.0")
 ]
 ```
 
