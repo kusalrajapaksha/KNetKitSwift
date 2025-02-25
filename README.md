@@ -38,7 +38,7 @@ In your app, create your custom configuration, authentication provider, and logg
 import Foundation
 import MyNetworkPackage
 
-struct AppNetworkConfiguration: NetworkManagerConfiguration {
+struct AppNetworkConfiguration: KNetKitManagerConfiguration {
     var baseURL: URL {
         URL(string: "https://your-api.com")! // Change to your API base URL.
     }
@@ -65,10 +65,7 @@ struct AppNetworkConfiguration: NetworkManagerConfiguration {
 import Foundation
 import MyNetworkPackage
 
-import Foundation
-import MyNetworkPackage
-
-actor SimpleAuthProvider: NetworkAuthProvider {
+actor SimpleAuthProvider: KNetKitAuthProvider {
     var authToken: String? {
         get async { "your_access_token" } // Retrieve your token securely.
     }
@@ -85,7 +82,7 @@ actor SimpleAuthProvider: NetworkAuthProvider {
 import Foundation
 import MyNetworkPackage
 
-struct ConsoleLogger: NetworkLogger {
+struct ConsoleLogger: KNetKitLogger {
     func log(request: URLRequest) {
         print("➡️ Request: \(request.httpMethod ?? "") \(request.url?.absoluteString ?? "")")
         if let headers = request.allHTTPHeaderFields {
@@ -117,19 +114,19 @@ Create an AppNetworkService class that initializes your network manager with the
 
 ```swift
 import Foundation
-import MyNetworkPackage
+import KNetKitSwift
 
 final class AppNetworkService {
     static let shared = AppNetworkService() // Singleton instance.
     
-    let networkManager: NetworkManager
+    let networkManager: KNetKitManager
     
     private init() {
         let config = AppNetworkConfiguration()
         let authProvider = SimpleAuthProvider()
         let logger = ConsoleLogger()
         
-        self.networkManager = NetworkManager(
+        self.networkManager = KNetKitManager(
             configuration: config,
             authProvider: authProvider,
             logger: logger
