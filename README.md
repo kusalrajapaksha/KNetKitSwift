@@ -36,7 +36,7 @@ In your app, create your custom configuration, authentication provider, and logg
 
 ```swift
 import Foundation
-import MyNetworkPackage
+import KNetKitSwift
 
 struct AppNetworkConfiguration: KNetKitManagerConfiguration {
     var baseURL: URL {
@@ -63,7 +63,7 @@ struct AppNetworkConfiguration: KNetKitManagerConfiguration {
 
 ```swift
 import Foundation
-import MyNetworkPackage
+import KNetKitSwift
 
 actor SimpleAuthProvider: KNetKitAuthProvider {
     var authToken: String? {
@@ -80,7 +80,7 @@ actor SimpleAuthProvider: KNetKitAuthProvider {
 
 ```swift
 import Foundation
-import MyNetworkPackage
+import KNetKitSwift
 
 struct ConsoleLogger: KNetKitLogger {
     func log(request: URLRequest) {
@@ -143,7 +143,7 @@ For SwiftUI apps, initialize it in your @main App struct. For UIKit apps, you ca
 
 ```swift
 import SwiftUI
-import MyNetworkPackage
+import KNetKitSwift
 
 @main
 struct MyApp: App {
@@ -163,7 +163,7 @@ struct MyApp: App {
 
 ```swift
 import UIKit
-import MyNetworkPackage
+import KNetKitSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -184,7 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 Now, anywhere in your app, you can access your network manager via the singleton:
 
 ```swift
-import MyNetworkPackage
+import KNetKitSwift
 
 // Define your API endpoint.
 let getUsersEndpoint = Endpoint(
