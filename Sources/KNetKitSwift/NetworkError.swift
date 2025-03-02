@@ -7,38 +7,6 @@
 
 import Foundation
 
-//public enum NetworkError: Error {
-//    case invalidURL
-//    case noInternetConnection
-//    case timeout
-//    case clientError(statusCode: Int, message: String)
-//    case serverError(statusCode: Int, message: String)
-//    case decodingFailed(message: String)
-//    case unknown(statusCode: Int, message: String)
-//    case sessionExpired
-//    
-//    public var localizedDescription: String {
-//        switch self {
-//        case .invalidURL:
-//            return "Invalid URL format"
-//        case .noInternetConnection:
-//            return "No internet connection"
-//        case .timeout:
-//            return "Request timed out"
-//        case let .clientError(statusCode, message):
-//            return "Client error (\(statusCode)): \(message)"
-//        case let .serverError(statusCode, message):
-//            return "Server error (\(statusCode)): \(message)"
-//        case let .decodingFailed(message):
-//            return "Decoding failed: \(message)"
-//        case let .unknown(statusCode, message):
-//            return "Unknown error (\(statusCode)): \(message)"
-//        case .sessionExpired:
-//            return "Session Expired"
-//        }
-//    }
-//}
-
 public enum NetworkError: Error, Sendable {
     case invalidURL
     case noData
