@@ -100,11 +100,17 @@ public final class KNetKitManager: @unchecked Sendable {
         
         // If the endpoint requires authorization, attempt to set the auth header.
         if endpoint.requiresAuth, let authProvider = authProvider {
-            guard let token = await authProvider.authToken,
-                  let type = await authProvider.tokenType else {
+            guard let token = await authProvider.authToken else {
                 throw NetworkError.authError
             }
-            request.setValue("\(type) \(token)", forHTTPHeaderField: "Authorization")
+            
+            if let type = await authProvider.tokenType {
+                // Use "Authorization" header with type (e.g., "Bearer <token>")
+                request.setValue("\(type) \(token)", forHTTPHeaderField: "Authorization")
+            } else {
+                // Use a generic "Authorization" header without type
+                request.setValue(token, forHTTPHeaderField: "Authorization")
+            }
         }
         
         // Set HTTP body if provided.
